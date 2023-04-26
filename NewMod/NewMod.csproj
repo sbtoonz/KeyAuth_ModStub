@@ -174,7 +174,6 @@
   <ItemGroup>
     <Compile Include="EmbeddedAssembly.cs" />
     <Compile Include="KeyAuthAPI.cs" />
-    <Compile Include="MaterialReplacer.cs" />
     <Compile Include="ModCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
