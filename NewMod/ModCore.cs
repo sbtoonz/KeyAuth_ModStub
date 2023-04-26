@@ -41,7 +41,7 @@ namespace NewMod
  
         private ConfigEntry<string> _username;
         private ConfigEntry<string> _password;
-        private ConfigEntry<string> _license;
+        //private ConfigEntry<string> _license; //Uncomment if you want to use a license instead of a username/pass
 
         private static KeyAuthAPI _API = new(
             name: "",
@@ -53,20 +53,18 @@ namespace NewMod
         public void Awake()
         {
             ServerConfigLocked = config("1 - General", "Lock Configuration", true, "If on, the configuration is locked and can be changed by server admins only.");
-            _username = config("2 - KeyAuth", "Username", "", "Put your username provided to you by mod author here", false);
-            _password = config("2 - KeyAuth", "Password", "", "Put your password provided to you by mod author here", false);
-            _license = config("2 - KeyAuth", "License", "", "Put the license provided to you by mod author here");
+            _username = config("2 - KeyAuth", "Username", "", "Put your username provided to you by mod author here", false); //Comment this out and uncomment license if youd like to use the a license instead of a username/pass
+            _password = config("2 - KeyAuth", "Password", "", "Put your password provided to you by mod author here", false); //Comment this out and uncomment license if youd like to use the a license instead of a username/pass
+            //_license = config("2 - KeyAuth", "License", "", "Put the license provided to you by mod author here"); //Uncomment if you want to use a license instead of a username/pass
             
             
             
             _API.Init();
             if(!_API.response.success)return;
-            _API.login(_username.Value, _password.Value);
+            _API.login(_username.Value, _password.Value); //Comment this out and uncomment license if youd like to use the a license instead of a username/pass
+            //_API.license(_license.Value); //Uncomment if you want to use a license instead of a username/pass
             if (_API.response.success)
             {
-                _API.license(_license.Value);
-                if(!_API.response.success)return;
-                
                 _API.log("User Login"); //Send Discord WebHook
                 
                 Assembly assembly = Assembly.GetExecutingAssembly();
