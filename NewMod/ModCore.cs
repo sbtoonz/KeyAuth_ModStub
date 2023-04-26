@@ -56,8 +56,12 @@ namespace NewMod
             _username = config("2 - KeyAuth", "Username", "", "Put your username provided to you by mod author here", false); //Comment this out and uncomment license if youd like to use the a license instead of a username/pass
             _password = config("2 - KeyAuth", "Password", "", "Put your password provided to you by mod author here", false); //Comment this out and uncomment license if youd like to use the a license instead of a username/pass
             //_license = config("2 - KeyAuth", "License", "", "Put the license provided to you by mod author here"); //Uncomment if you want to use a license instead of a username/pass
-            
-            
+
+            if (_API.ownerid.IsNullOrWhiteSpace())
+            {
+                Debug.LogError("Please check your setup the API section is not filled out properly");
+                return;
+            }
             
             _API.Init();
             if(!_API.response.success)return;
