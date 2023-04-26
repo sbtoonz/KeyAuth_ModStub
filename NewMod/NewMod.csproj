@@ -176,7 +176,6 @@
     <Compile Include="KeyAuthAPI.cs" />
     <Compile Include="MaterialReplacer.cs" />
     <Compile Include="ModCore.cs" />
-    <Compile Include="MonoScripts\ShaderReplacerNew.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
