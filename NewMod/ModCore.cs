@@ -39,8 +39,8 @@ namespace NewMod
 
         #endregion
  
-        private ConfigEntry<string> _username;
-        private ConfigEntry<string> _password;
+        private ConfigEntry<string> _username; //comment this out if you want to use license instead of username/pass
+        private ConfigEntry<string> _password; //comment this out if you want to use license instead of username/pass
         //private ConfigEntry<string> _license; //Uncomment if you want to use a license instead of a username/pass
 
         private static KeyAuthAPI _API = new(
@@ -52,7 +52,7 @@ namespace NewMod
         
         public void Awake()
         {
-            ServerConfigLocked = config("1 - General", "Lock Configuration", true, "If on, the configuration is locked and can be changed by server admins only.");
+            ServerConfigLocked = config("1 - General", "Lock Configuration", true, "If on, the configuration is locked and can be changed by server admins only.", true);
             _username = config("2 - KeyAuth", "Username", "", "Put your username provided to you by mod author here", false); //Comment this out and uncomment license if youd like to use the a license instead of a username/pass
             _password = config("2 - KeyAuth", "Password", "", "Put your password provided to you by mod author here", false); //Comment this out and uncomment license if youd like to use the a license instead of a username/pass
             //_license = config("2 - KeyAuth", "License", "", "Put the license provided to you by mod author here"); //Uncomment if you want to use a license instead of a username/pass
@@ -76,7 +76,7 @@ namespace NewMod
                 harmony.PatchAll(assembly);
                 configSync.AddLockingConfigEntry(ServerConfigLocked);
                 
-                StartCoroutine(KeyAuthAPI.CheckKeyAuth(_API)); //This will check the session every 3s without this you can only check session on login
+                StartCoroutine(KeyAuthAPI.CheckKeyAuth(_API)); //This will check the session every 3s without this you can only check session on login and the session will quickly expire
             }
             else
             {
