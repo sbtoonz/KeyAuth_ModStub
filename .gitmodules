@@ -1,0 +1,3 @@
+[submodule "ServerSync"]
+	path = ServerSync
+	url = https://github.com/sbtoonz/ServerSync.git
